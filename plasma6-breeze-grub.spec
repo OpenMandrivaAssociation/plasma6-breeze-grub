@@ -1,5 +1,5 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 70 ] && echo -n un; echo -n stable)
-%define git 20230610
+%define git 20230707
 
 Summary:	The Breeze theme for the GRUB bootloader
 Name:		plasma6-breeze-grub
