@@ -1,15 +1,17 @@
 %define stable %([ "$(echo %{version} |cut -d. -f2)" -ge 80 -o "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
-#define git 20231104
+%define git 20240217
+%define gitbranch Plasma/6.0
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
 Summary:	The Breeze theme for the GRUB bootloader
 Name:		plasma6-breeze-grub
-Version:	5.93.0
+Version:	5.94.0
 Release:	%{?git:0.%{git}.}1
 License:	GPL
 Group:		Graphical desktop/KDE
 Url:		http://www.kde.org
 %if 0%{?git:1}
-Source0:	https://invent.kde.org/plasma/breeze-grub/-/archive/master/breeze-grub-master.tar.bz2#/breeze-grub-%{git}.tar.bz2
+Source0:	https://invent.kde.org/plasma/breeze-grub/-/archive/%{gitbranch}/breeze-grub-%{gitbranchd}.tar.bz2#/breeze-grub-%{git}.tar.bz2
 %else
 Source0:	http://download.kde.org/%{stable}/plasma/%(echo %{version} |cut -d. -f1-3)/breeze-grub-%{version}.tar.xz
 %endif
@@ -26,7 +28,7 @@ the GRUB bootloader
 /boot/grub2/themes/breeze
 
 %prep
-%autosetup -n breeze-grub-%{?git:master}%{!?git:%{version}}
+%autosetup -n breeze-grub-%{?git:%{gitbranchd}}%{!?git:%{version}}
 
 %build
 
