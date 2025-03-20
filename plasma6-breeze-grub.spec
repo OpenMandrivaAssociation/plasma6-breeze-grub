@@ -8,7 +8,7 @@
 Summary:	The Breeze theme for the GRUB bootloader
 Name:		plasma6-breeze-grub
 Version:	6.3.3
-Release:	%{?git:0.%{git}.}1
+Release:	%{?git:0.%{git}.}2
 License:	GPL
 Group:		Graphical desktop/KDE
 Url:		https://www.kde.org
